@@ -1,0 +1,39 @@
+<div class="container" *ngIf="Areas">
+	<h2>{{title}}</h2>
+
+	<div  class="alert alert-success" *ngIf="status== 'success'">
+		El Areas se ha creado correctamente, puedes <a [routerLink]="['/Areas', save_Areas.id]">verlo aqui</a>
+	</div>
+
+	<div  class="alert alert-danger" *ngIf="status== 'failed'">
+		El Areas NO se ha creado correctamente
+	</div>
+
+	<form #AreasForm="ngForm" (ngSubmit)="onSubmit(AreasForm)">
+		<div class="form-row">
+					<div class="form-group col-xs-2">
+							<label for="Nombre">Nombre del Area <span class="asterisco">(*)</span></label>
+							<input type="text" class="form-control" id="Nombre"  name="Nombre" #Nombre="ngModel" [(ngModel)]="Areas.Nombre" required>
+							<span *ngIf="Nombre.touched && !Nombre.valid"class="alert alert-danger">
+							El nombre del area
+							</span>
+          </div>
+          <div class="form-group col-xs-1">
+            <label for="Estado">Estado</label>
+            <input class="form-control" type="checkbox" id="Estado" name="Estado" [ngModel]="Areas.Estado">
+          </div>
+          <div class="form-group col-xs-2">
+            <label for="identificacion">Identificacion del lider de Area <span class="asterisco">(*)</span></label>
+            <input type="text" class="form-control" id="Lider"  name="identificacion" #Lider="ngModel" [(ngModel)]="Areas.Lider" required>
+            <span *ngIf="Lider.touched && !Nombre.valid"class="alert alert-danger">
+              Identificacion del lider de Area
+            </span>
+          </div>
+		</div>
+		<p>Todos los campos con <span class="asterisco">(*)</span> son obligatorios para poder continuar.</p>
+
+		  <input type="submit" class="btn btn-primary" value="Crear" [disabled]="!AreasForm">
+		</form>
+
+		<br><br><br><br>
+</div>

@@ -1,0 +1,15 @@
+<div class="ng-star-inserted">
+	<h2>Lista de Area</h2>
+	<br>
+	<div class="row">
+		<div *ngFor="let Area of Areas[0]">
+			<a [routerLink]="['/areas/', Area.id]">
+				<div class="card" style="width: 22rem;margin-left: 20px;margin-bottom: 40px;">
+				  <div class="card-body">
+            <p class="card-text"><strong>{{Area.Nombre}}</strong></p>
+				  </div>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>

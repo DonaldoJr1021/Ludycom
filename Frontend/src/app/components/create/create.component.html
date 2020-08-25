@@ -1,0 +1,88 @@
+<div class="container">
+
+	<h2>{{title}}</h2>
+
+	<div  class="alert alert-success" *ngIf="status== 'success'">
+		El Usuario se ha creado correctamente, puedes <a [routerLink]="['/Usuario', save_Usuario.id]">verlo aqui</a>
+	</div>
+
+	<div  class="alert alert-danger" *ngIf="status== 'failed'">
+		El Usuario NO se ha creado correctamente
+	</div>
+
+	<form #usuarioForm="ngForm" (ngSubmit)="onSubmit(usuarioForm)">
+		<div class="form-row">
+					<div class="form-group col-xs-2">
+							<label for="Numero_Documento">Número de Identificación <span class="asterisco">(*)</span></label>
+							<input type="text" size="7" class="form-control" id="Numero_Documento"  name="Numero_Documento" #Numero_Documento="ngModel" [(ngModel)]="Usuario.Numero_Documento" required>
+							<span *ngIf="Numero_Documento.touched && !Numero_Documento.valid"class="alert alert-danger">
+							El documento es obligatorio
+							</span>
+          </div>
+		</div>
+		  <div class="form-row">
+		    <div class="form-group col-xs-2">
+		      <label for="Nombre">Nombres <span class="asterisco">(*)</span></label>
+		      <input type="text" class="form-control" id="Nombres"  name="Nombres" #Nombres="ngModel" [(ngModel)]="Usuario.Nombres" required>
+			    <span *ngIf="Nombres.touched && !Nombres.valid"class="alert alert-danger">
+			  	El nombre es obligatorio
+			  	</span>
+				</div>
+
+		    <div class="form-group col-xs-2">
+		      <label for="Apellidos">Apellidos<span class="asterisco">(*)</span></label>
+		      <input type="text" class="form-control" id="Apellidos"  name="Apellidos" #Apellidos="ngModel" [(ngModel)]="Usuario.Apellidos" required>
+		       <span *ngIf="Apellidos.touched && !Apellidos.valid"class="alert alert-danger">
+			  	El apellido es obligatorio
+			  	</span>
+				</div>
+			</div>
+
+			<div class="form-row">
+						<div class="form-group col-xs-2">
+							<label for="Email">E-mail: <span class="asterisco">(*)</span></label>
+							<input type="Email" class="form-control" id="Email" name="Email" #Email="ngModel"
+							[(ngModel)]="Usuario.Email" required>
+							<span *ngIf="Email.touched && !Email.valid" class="alert alert-danger">
+							El email es obligatorio
+							</span>
+						</div>
+
+						<div class="form-group col-xs-2">
+							<label for="Fecha_Nacimiento">Fecha de nacimiento: <span class="asterisco">(*)</span></label>
+							<input type="date" class="form-control" id="Fecha_Nacimiento" name="Fecha_Nacimiento" #Fecha_Nacimiento="ngModel" [(ngModel)]="Usuario.Fecha_Nacimiento" required>
+							<span *ngIf="Fecha_Nacimiento.touched && !Fecha_Nacimiento.valid" class="alert alert-danger">
+								La fecha de nacimiento es obligatoria
+								</span>
+						</div>
+			</div>
+
+			<div class="form-row">
+        <div class="form-group col-xs-2">
+          <label for="Salario">Salario</label>
+          <input type="number" step="2" class="form-control" id="Salario"  name="Salario" #Salario="ngModel" [(ngModel)]="Usuario.Salario" required>
+          <span *ngIf="Salario.touched && !Salario.valid" class="alert alert-danger">
+            La fecha de nacimiento es obligatoria
+            </span>
+        </div>
+        <div class="form-group col-xs-1">
+          <label for="Estado">Estado</label>
+          <input class="form-control" type="checkbox" id="Estado" name="Estado" [ngModel]="Usuario.Estado">
+        </div>
+					<div class="form-group col-xs-2">
+              <label for="Area">Area: </label>
+              <select class="browser-default custom-select" id="IdArea" name="IdAre" [ngModel]="Usuario.IdArea">
+                <option value="1">Desarrollo</option>
+                <option value="2">Diseño</option>
+                <option value="3">Pruebas</option>
+                <option value="4">Gerencia</option>
+              </select>
+						</div>
+			</div>
+		<p>Todos los campos con <span class="asterisco">(*)</span> son obligatorios para poder continuar.</p>
+
+		  <input type="submit" class="btn btn-primary" value="Crear" [disabled]="!usuarioForm">
+		</form>
+
+		<br><br><br><br>
+</div>

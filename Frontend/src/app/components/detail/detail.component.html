@@ -1,0 +1,26 @@
+<div class="container" *ngIf="Usuario">
+	<h1><u> Informacion del Usuario</u></h1>
+	<br>
+	<div class="row">
+
+		<div class="col-md-8">
+			<h5><u> Datos del Usuario</u> </h5>
+			<p><strong> Nombre:</strong> {{Usuario.Nombres }} {{Usuario.Apellidos }} </p>
+			<p><strong> Correo: </strong>{{Usuario.Email}}</p>
+			<p><strong> Documento: </strong>{{Usuario.Numero_Documento}}</p>
+			<p><strong> Fecha denacimiento: </strong>{{Usuario.Fecha_Nacimiento}}</p>
+
+			<div class="botones" *ngIf=" confirm == false">
+				<a [routerLink]="['/editar-Usuario', Usuario.id]" class="btn btn-warning" style="margin-right: 20px;"><img src="../../../assets/img/editar.png">  Editar</a>
+				<a (click)="setConfirm(true)"  class="btn btn-danger"><img src="../../../assets/img/cesto-de-basura.png">Eliminar</a>
+			</div>
+
+			<div class="botones" *ngIf=" confirm == true">
+				<strong>¿Estas seguro que deseas eliminar este Usuario?</strong><br>
+				<a (click)="deleteUsuario(Usuario.id)"  class="btn btn-danger" style="margin-right: 20px;"><img src="../../../assets/img/cesto-de-basura.png"> Si</a>
+				<a (click)="setConfirm(false)" class="btn btn-warning" ><img src="../../../assets/img/boton-cancelar.png">  Cancelar</a>
+			</div>
+		</div>
+	</div>
+</div>
+

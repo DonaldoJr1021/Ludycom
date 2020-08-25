@@ -1,0 +1,25 @@
+<div class="container" *ngIf="Area">
+	<h1><u> Información del Area</u></h1>
+	<br>
+	<div class="row">
+
+		<div class="col-md-8">
+			<h5><u> Datos del Area</u> </h5>
+			<p><strong> Nombre:</strong> {{Area[0].Nombre}}</p>
+			<input class="card-text" type="checkbox" id="Estado" onchange="" name="Estado" value="Area[0].Estado.data"> Estado
+			<p class="card-text"><strong> Lider: </strong>{{Area[0].Lider}}</p>
+
+			<div class="botones" *ngIf=" confirm == false">
+				<a [routerLink]="['/editar-Area', Area.id]" class="btn btn-warning" style="margin-right: 20px;"><img src="../../../assets/img/editar.png">  Editar</a>
+				<a (click)="setConfirm(true)"  class="btn btn-danger"><img src="../../../assets/img/cesto-de-basura.png">Eliminar</a>
+			</div>
+
+			<div class="botones" *ngIf=" confirm == true">
+				<strong>¿Estas seguro que deseas eliminar este Area?</strong><br>
+				<a (click)="deleteArea(Area.id)"  class="btn btn-danger" style="margin-right: 20px;"><img src="../../../assets/img/cesto-de-basura.png"> Si</a>
+				<a (click)="setConfirm(false)" class="btn btn-warning" ><img src="../../../assets/img/boton-cancelar.png">Cancelar</a>
+			</div>
+		</div>
+	</div>
+</div>
+
